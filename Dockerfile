@@ -1,9 +1,9 @@
-FROM python:3.10.11-alpine3.18
+FROM ubuntu:22.04
 
 WORKDIR /app
 COPY . /app
 
-RUN apk update && apk --no-cache add openjdk11-jre-headless && rm -rf /var/cache/apk/*
+RUN apt update && apt install -y python3 python3-pip openjdk-11-jdk && apt clean
 RUN pip install -r requirements.txt
 
-CMD ["python", "index.py"]
+CMD ["python3", "index.py"]
